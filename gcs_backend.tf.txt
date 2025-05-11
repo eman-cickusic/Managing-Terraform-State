@@ -1,0 +1,25 @@
+# Google Cloud Storage backend configuration
+# Uncomment this block to use the GCS backend
+# Remember to run terraform init -migrate-state after changing backend configuration
+
+/*
+terraform {
+  backend "gcs" {
+    bucket  = "your-project-id-tf-state"  # Replace with your bucket name
+    prefix  = "terraform/state"
+  }
+}
+*/
+
+# When using this backend, state is stored in Google Cloud Storage
+# Benefits:
+# - State is stored remotely and can be shared between team members
+# - Supports state locking to prevent concurrent modifications
+# - More secure than storing state locally
+# - Built-in versioning for state files
+# - Better for team environments
+
+# Limitations:
+# - Requires setting up a Google Cloud Storage bucket
+# - Potential costs for storage and operations
+# - Requires GCP credentials

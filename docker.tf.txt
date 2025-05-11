@@ -1,0 +1,38 @@
+# Docker provider configuration
+provider "docker" {
+  # Uncomment and adjust the host parameter if needed for your environment
+  # host = "unix:///var/run/docker.sock"
+}
+
+# Docker image resource
+resource "docker_image" "nginx" {
+  name = "nginx:latest"
+}
+
+# Docker container resource
+# This configuration mirrors what we would create after importing an existing container
+resource "docker_container" "web" {
+  name  = "hashicorp-learn"
+  image = docker_image.nginx.image_id
+
+  ports {
+    external = 8080
+    internal = 80
+    ip       = "0.0.0.0"
+    protocol = "tcp"
+  }
+  
+  # These attributes might be added by Terraform with default values after import
+  # attach    = false
+  # logs      = false
+  # must_run  = true
+  # start     = true
+}
+
+# Note: When importing an existing container, start with an empty resource:
+# resource "docker_container" "web" {}
+
+# Then run:
+# terraform import docker_container.web $(docker inspect -f {{.ID}} container-name)
+
+# After importing, use terraform show to get the current state and create configuration

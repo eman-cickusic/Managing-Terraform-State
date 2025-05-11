@@ -1,0 +1,16 @@
+provider "google" {
+  project     = "your-project-id"  # Replace with your GCP project ID
+  region      = "us-central1"      # Replace with your preferred region
+}
+
+# Cloud Storage bucket for remote state
+resource "google_storage_bucket" "tf-state-bucket" {
+  name        = "your-project-id-tf-state"  # Replace with your GCP project ID
+  location    = "US"
+  uniform_bucket_level_access = true
+  force_destroy = true  # For easy cleanup in demo environments
+}
+
+# Note: In a real-world scenario, you wouldn't typically define your state bucket
+# in the same Terraform configuration that uses it. This is included here for 
+# demonstration purposes only.

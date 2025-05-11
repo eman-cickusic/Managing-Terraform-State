@@ -1,0 +1,23 @@
+# Local backend configuration
+# Uncomment this block to use the local backend
+# Remember to run terraform init after changing backend configuration
+
+/*
+terraform {
+  backend "local" {
+    path = "terraform/state/terraform.tfstate"
+  }
+}
+*/
+
+# When using this backend, state is stored on your local filesystem
+# This is the default behavior if no backend is specified
+# Benefits:
+# - Simple to use
+# - No additional configuration required
+# - Easy to understand
+
+# Limitations:
+# - Not suitable for team environments
+# - No remote state locking
+# - Risk of state file loss if local system fails
