@@ -11,7 +11,7 @@ Terraform must store state about your managed infrastructure and configuration. 
 
 By default, state is stored in a local file named `terraform.tfstate`, but it can also be stored remotely, which works better in team environments.
 
-## Video
+## Video 
 
 https://youtu.be/HX4px1zDuPs
 
